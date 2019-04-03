@@ -1,0 +1,362 @@
+html {
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    background-image: url(https://i1.wp.com/www.mrgreen.com/app/uploads/wheel-of-fortune-background_theme.jpg);
+    margin: 0 auto;
+    height: inherit;
+    overflow: hidden;
+}
+
+.first-flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+} 
+
+.second-flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+#player-bank {
+    width: 200px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 60px;
+}
+
+#title {
+    font-family: 'Luckiest Guy';
+    padding-top: 10px;
+    color: yellow;
+    font-size: 100px;
+    height: 100px;
+    width: 1000px;
+    margin: auto 0;
+}
+
+#lives {
+    display: flex;
+    width: 200px;
+    height: 100px;
+    color: white;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.grid-container {
+    width: 90vw;
+    height: 28vh;
+    margin: 10px;
+    margin-top: 0px;
+    margin-left: 80px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:" . one two three four five six seven eight nine ten eleven twelve . "
+                        "thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twenty-one twenty-two twenty-three twenty-four twenty-five twenty-six"
+                        "twenty-seven twenty-eight twenty-nine thirty thirty-one thirty-two thirty-three thirty-four thirty-five thirty-six thirty-seven thirty-eight thirty-nine fourty"
+                        " . fourty-one fourty-two fourty-three fourty-four fourty-five fourty-six fourty-seven fourty-eight fourty-nine fifty fifty-one fifty-two .  ";
+    grid-column-gap: 3px;
+    grid-row-gap: 3px;
+}
+
+.grid-item {
+    background: -webkit-linear-gradient(#4caf50, #66bb6a, #81c784);
+    border: 5px rgb(49, 49, 49) solid;
+    padding: 16px;
+    font-size: 25px;
+    text-align: center
+    width 6px;
+    height: 8px;
+}
+
+
+
+#wheel {
+    position: relative;
+    height: 400px;
+    width: 400px;
+}  
+
+#wheel > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 400px;
+    width: 400px;
+}
+
+#category {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: top;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    width: 600px;
+    height: 50px;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.alphabet-grid {
+    width: 600px;
+    height: 100px;
+    margin: 5px;
+    padding: 30px;
+    display: grid;
+    position: relative;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "A B C D E F G H I J K L M"
+    "N O P Q R S T U V W X Y Z";
+    grid-column-gap: 3px;
+    grid-row-gap: 3px; 
+}
+
+.alphabet-item {
+    border: 1px grey solid;
+    text-align: center;
+    font-size: 50px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+}
+
+.alphabet-item:hover {
+    cursor: pointer;
+    background-color: rgba(0,0,0,0);
+}
+#wheelButton, #message-box, #next {
+    display: flex;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: 1px rgba(71, 12, 73, 0.5) solid;
+    box-shadow: 0px 0px 5px 5px black;
+    border-radius: 8px;
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 25px;
+    padding: 5px;
+    width: 300px;
+    height: 70px;
+}
+
+#clue-btn, #clue, #guess, #submit {
+    display: flex;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: 1px rgba(71, 12, 73, 0.5) solid;
+    box-shadow: 0px 0px 5px 5px black;
+    border-radius: 8px;
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 25px;
+    padding: 5px;
+    width: 300px;
+    height: 40px;
+}
+
+#message-box {
+    font-size: 80px;
+    text-align: center;
+}
+.clue-category {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.guess-category {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#guess-container {
+    text-align: center;
+    align-items: center;
+    border: 1px white solid;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#one {
+    grid-area: one;
+}
+#two {
+    grid-area: two;
+}
+#three {
+    grid-area: three;
+}
+#four {
+    grid-area: four;
+}
+#five {
+    grid-area: five;
+}
+#six {
+    grid-area: six;
+}
+#seven {
+    grid-area: seven;
+}
+#eight {
+    grid-area: eight;
+}
+#nine {
+    grid-area: nine;
+}
+#ten {
+    grid-area: ten;
+}
+#eleven {
+    grid-area: eleven;
+}
+#twelve {
+    grid-area: twelve;
+}
+#thirteen {
+    grid-area: thirteen;
+}
+#fourteen {
+    grid-area: fourteen;
+}
+#fifteen {
+    grid-area: fifteen;
+}
+#sixteen {
+    grid-area: sixteen;
+}
+#seventeen {
+    grid-area: seventeen;
+}
+#eighteen {
+    grid-area: eighteen;
+}
+#nineteen {
+    grid-area: nineteen;
+}
+#twenty {
+    grid-area: twenty;
+}
+#twenty-one {
+    grid-area: twenty-one;
+}
+#twenty-two {
+    grid-area: twenty-two;
+}
+#twenty-three {
+    grid-area: twenty-three;
+}
+#twenty-four {
+    grid-area: twenty-four;
+}
+#twenty-five {
+    grid-area: twenty-five;
+}
+#twenty-six {
+    grid-area: twenty-six;
+}
+#twenty-seven {
+    grid-area: twenty-seven;
+}
+#twenty-eight {
+    grid-area: twenty-eight;
+}
+#twenty-nine {
+    grid-area: twenty-nine;
+}
+#thirty {
+    grid-area: thirty;
+}
+#thirty-one {
+    grid-area: thirty-one;
+}
+#thirty-two {
+    grid-area: thirty-two;
+}
+#thirty-three {
+    grid-area: thirty-three;
+}
+#thirty-four {
+    grid-area: thirty-four;
+}
+#thirty-five {
+    grid-area: thirty-five;
+}
+#thirty-six {
+    grid-area: thirty-six;
+}
+#thirty-seven {
+    grid-area: thirty-seven;
+}
+#thirty-eight {
+    grid-area: thirty-eight;
+}
+#thirty-nine {
+    grid-area: thirty-nine;
+}
+#fourty {
+    grid-area: fourty;
+}
+#fourty-one {
+    grid-area: fourty-one;
+}
+#fourty-two {
+    grid-area: fourty-two;
+}
+#fourty-three {
+    grid-area: fourty-three;
+}
+#fourty-four {
+    grid-area: fourty-four;
+}
+#fourty-five {
+    grid-area: fourty-five;
+}
+#fourty-six {
+    grid-area: fourty-six;
+}
+#fourty-seven {
+    grid-area: fourty-seven;
+}
+#fourty-eight {
+    grid-area: fourty-eight;
+}
+#fourty-nine {
+    grid-area: fourty-nine;
+}
+#fifty {
+    grid-area: fifty;
+}
+#fifty-one {
+    grid-area: fifty-one;
+}
+#fifty-two {
+    grid-area: fifty-two;
+}
+
