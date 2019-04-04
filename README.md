@@ -21,6 +21,7 @@ I wanted to get my layout done first so I started with my html and css done firs
 ## Logic:
 
 The first thing I needed to do was make sure I had all of the info for the game so the functions could work. I hard coded all of the alphahbet values, each category, clue, and answer.
+
 Functions: 
   - generateQuestion
   - guessLetter
@@ -31,15 +32,12 @@ Functions:
   - resetGame
   - populateAnswer (didn't implement this one yet)
   
-  ## Technologies Used :
-    -HTML:
-      - Grid
-      - Form
-    - CSS:
-      - Flexbox
-    - JavaScript
+## Technologies Used :
 
-
+- HTML
+- CSS
+- Javascript
+   
 ## Bugs: 
 
 - Getting the wheel image to stop bouncing.(Fixed: the wheel image and the div we're not the same size.)
