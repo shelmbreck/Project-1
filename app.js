@@ -1,8 +1,6 @@
-var question;
-var lives = 5;
-var money = 1000;
 var letters = [ 'a' , 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 
 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ]
+// Value of each alphabet letter that will be decreased/added from/to your playerbank with each guess
 var alphabetValue = {
     a: 90, 
     b: 80, 
@@ -31,6 +29,7 @@ var alphabetValue = {
     y: 90,
     z: 70,
 }
+// value of each section of the wheel
 var wheelValues = {
     0 : 500, 
     1: 900, 
@@ -57,105 +56,105 @@ var wheelValues = {
     22: 0, 
     23: 5000
 }
-
+// categoty/answer/clue that is generated in the generateQuestion function
 var questions = [
     {
-    category: 'Name that movie quote!',
-    answer: 'BYE FELICIA',
-    clue: 'Hello Felicia'
+        category: 'Name that movie quote!',
+        answer: 'BYE FELICIA',
+        clue: 'Hello Felicia'
     },
     {
-    category: 'Name that movie quote!',
-    answer: "ILL BE BACK",
-    clue: 'Arnold'
+        category: 'Name that movie quote!',
+        answer: "ILL BE BACK",
+        clue: 'Arnold'
     },
     {
-    category: 'Name that movie quote!',
-    answer: "YOURE KILLIN ME SMALLS",
-    clue: 'Yeah Yeah'
+        category: 'Name that movie quote!',
+        answer: "YOURE KILLIN ME SMALLS",
+        clue: 'Yeah Yeah'
     },
     {
-    category: 'Can you name the song lyrics?',
-    answer: "EYE OF THE TIGER",
-    clue: 'Rawr'
+        category: 'Can you name the song lyrics?',
+        answer: "EYE OF THE TIGER",
+        clue: 'Rawr'
     },
     {
-    category: 'Can you name the song lyrics?',
-    answer: "THAT DONT IMPRESS ME MUCH",
-    clue: 'Shania'
+        category: 'Can you name the song lyrics?',
+        answer: "THAT DONT IMPRESS ME MUCH",
+        clue: 'Shania'
     },
     {
-    category: 'Can you name the song lyrics?',
-    answer: "EVERYBODY DIES BUT NOT EVERYBODY LIVES",
-    clue: 'Drake'
+        category: 'Can you name the song lyrics?',
+        answer: "EVERYBODY DIES BUT NOT EVERYBODY LIVES",
+        clue: 'Drake'
     },
     {
-    category: 'Are you hungry?',
-    answer: "HOT FUDGE SUNDAE",
-    clue: 'Dessert'
+        category: 'Are you hungry?',
+        answer: "HOT FUDGE SUNDAE",
+        clue: 'Dessert'
     },
     {
-    category: 'Are you hungry?',
-    answer: "BAKED LASAGNA",
-    clue: 'Dinner'
+        category: 'Are you hungry?',
+        answer: "BAKED LASAGNA",
+        clue: 'Dinner'
     },
     {
-    category: 'Are you hungry?',
-    answer: "BUFFALO WINGS",
-    clue: 'Appetizer'
+        category: 'Are you hungry?',
+        answer: "BUFFALO WINGS",
+        clue: 'Appetizer'
     },
     {
-    category: 'Slogans, slogans, slogans',
-    answer: "EASY BREEZY BEAUTIFUL COVERGIRL",
-    clue: 'Makeup'
+        category: 'Slogans, slogans, slogans',
+        answer: "EASY BREEZY BEAUTIFUL COVERGIRL",
+        clue: 'Makeup'
     },
     {
-    category: 'Slogans, slogans, slogans',
-    answer: "TASTE THE RAINBOW",
-    clue: 'Candy'
+        category: 'Slogans, slogans, slogans',
+        answer: "TASTE THE RAINBOW",
+        clue: 'Candy'
     },
     {
-    category: 'Slogans, slogans, slogans?',
-    answer: "CAN YOU HEAR ME NOW?",
-    clue: 'Phone'
+        category: 'Slogans, slogans, slogans?',
+        answer: "CAN YOU HEAR ME NOW?",
+        clue: 'Phone'
     },
     {
-    category: 'How well do you know the 90s',
-    answer: "THE MACARENA",
-    clue: 'Dance'
+        category: 'How well do you know the 90s',
+        answer: "THE MACARENA",
+        clue: 'Dance'
     },
     {
-    category: 'How well do you know the 90s?',
-    answer: "SAVED BY THE BELL",
-    clue: 'High School'
+        category: 'How well do you know the 90s?',
+        answer: "SAVED BY THE BELL",
+        clue: 'High School'
     },
     {
-    category: 'How well do you know the 90s?',
-    answer: "BILL NYE THE SCIENCE GUY",
-    clue: 'Science'
+        category: 'How well do you know the 90s?',
+        answer: "BILL NYE THE SCIENCE GUY",
+        clue: 'Science'
     },
     {
-    category: 'Name that song!',
-    answer: "I WANT IT THAT WAY",
-    clue: 'Boy Band Era'
+        category: 'Name that song!',
+        answer: "I WANT IT THAT WAY",
+        clue: 'Boy Band Era'
     },
     {
-    category: 'Name that song!',
-    answer: 'YOU GIVE LOVE A BAD NAME',
-    clue: '1986'
+        category: 'Name that song!',
+        answer: 'YOU GIVE LOVE A BAD NAME',
+        clue: '1986'
     },
     {
-    category: 'Name that song!',
-    answer: "CHATTAHOOCHEE",
-    clue: 'Honky Tonk'
+        category: 'Name that song!',
+        answer: "CHATTAHOOCHEE",
+        clue: 'Honky Tonk'
     }
 ]
-var playerBank;
+var lives = 5;
+var money = 1000;
+var question;
 var showAnswer;
 var chars;
 var grid;
-var livesLeft;
-var gameOver;
 var wheelValue;
 var wheelNumber;
 var wheelSpin;
@@ -167,9 +166,10 @@ var interval
 
 //generate random questions from the questions array
 function generateQuestion() {
+    resetGame()
     question = questions[Math.floor(Math.random() * questions.length)]
     document.querySelector('#category').textContent = question.category
-    document.querySelector('#clue').textContent = question.clue
+    document.querySelector('#clue > p').textContent = question.clue
     chars = question.answer.split('');
     grid = document.getElementsByClassName('grid-item');
     for (let i = 0; i < chars.length; i++) {
@@ -177,11 +177,15 @@ function generateQuestion() {
             grid[i].style.background = 'white';
         }
     }
-
 }
 
+//lives decrease with each guess
 function guessLetter(letter) {
-    if(gameOver === false) {
+    if(!checkIfGameOver()) {
+        document.getElementById('lives').textContent = lives
+        console.log(lives)
+        document.getElementById('player-bank').textContent = "$" + money
+        console.log(money)
         lives--;
         money -= alphabetValue[letter.id.toLowerCase()]
         if (chars.indexOf(letter.id) > -1) {
@@ -192,49 +196,52 @@ function guessLetter(letter) {
             }
         } else {
             letter.style.background = 'red'
-        } 
+            // player bank increses in value 
+        }
+        //money - alphabetValue.getElementById('player-bank')
+        //money + alphabetValue.getElementById('player-bank')
+    } else {
+        // prompt them to guess
+        document.getElementById('message-box').textContent = "No more lives, take a guess!"
     }
-    checkIfGameOver()
 
 }
 
+// check if the game is over, display if the game is over or go to the next question
 function checkIfGameOver() {
-    if(money < 50 || lives < 1) {
-        gameOver = true;
-        document.querySelector('alphabet-grid').removeEventListener('click', function(e) {
-            document.getElementById('#message-box').textContent = "Game Over, Try Again!"; 
-            resetGame()
-        })
+    if(lives < 1) {
+        return true
     } else {
-        if(money > 50 || lives > 1) {
-            gameOver = false;
-            document.getElementById('#message-box').textContent = "Good job! Go to the next question!"; 
-            winner();
-        }
+        return false
     }
 }
 
 function initGame() {
-    gameOver = false
     generateQuestion() 
 }
 
-function winner() {
-    var guessedGrid = document.querySelectorAll('.grid-item'); 
-    var guessArray = [] 
+// Mike's old code NOOOOOOOOOOOOOOO NEEEEEEEEEED
+// function winner() {
+//     var guessedGrid = document.querySelectorAll('.grid-item'); 
+//     var guessArray = [] 
 
-    guessedGrid.forEach( function(space) {  
-        guessArray.push(space.textContent); 
-    })                                      
+//     guessedGrid.forEach( function(space) {  
+//         guessArray.push(space.textContent); 
+//     })                                      
 
-    var guess = guessArray.join('') 
-    if (guess === question.answer.replace(/\s/g,'') ) { 
-        generateQuestion()
-        document.getElementById('#message-box').textContent = wheelValues;
-    }
+//     var guess = guessArray.join('') 
+//     if (guess === question.answer.replace(/\s/g,'') ) { 
+//         generateQuestion()
+//         document.getElementById('#message-box').textContent = wheelValues;
+//     }
+// }
+
+function getMoney () {
+    //playerBank decreases in alphabet value with each guess
+    //playerBank increases in value if you win
 }
 
-    //Make wheel rotate
+//Make wheel rotate
 function wheelSpin() {
     var imageDegrees = document.getElementById('wheel')
     var arr = Object.keys(wheelValues)
@@ -250,38 +257,75 @@ function wheelSpin() {
 }
 
 function resetGame () {
-    gameOver = true
-    grid = document.getElementsByClassName('grid-item');
-    for (let i = 0; i < chars.length; i++) {
-        if (chars[i] !== ' ') {
-            grid[i].style.background = 'white';
-        }
+    document.querySelector('#clue > p').classList.add('hidden')
+    var grid = document.getElementsByClassName('grid-item');
+    for (let i = 0; i < grid.length; i++) {
+        grid[i].style.background = "-webkit-linear-gradient(#4caf50, #66bb6a, #81c784)"
+        // reset grid[i]'s text content to be ""
+        grid[i].textContent = ''
     }
-    checkIfGameOver()
+    // document.getElementById('player-bank').textContent = $ + money
+    lives = 5
+    document.getElementById('message-box').textContent = ''
+    document.getElementById('guess').value = ''
+    var alph = document.getElementsByClassName('alphabet-item');
+    for (let i = 0; i < alph.length; i++) {
+        alph[i].style.background = "rgba(0,0,0,0.5)"
+    }
+}
+
+function initEnd(guess, answer) {
+    if(guess.toUpperCase() === answer){
+        console.log("You rock")
+        populateAnswer()
+    } else{
+        // TODO write youSuck() and call it
+        console.log("You suck")
+    }
+}
+
+function populateAnswer() {
+    // TODO
+    console.log("TODO: populate answer")
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    livesLeft = document.getElementById("lives")
+    // this will need to go in your click functions
+    document.getElementById("lives").textContent = lives
+
     var nextQuestion = document.getElementById("next")
-        document.querySelectorAll('.alphabet-item').forEach(function(letter) {
-            letter.addEventListener('click', function(e) {
-                guessLetter(e.target);
-            })
-        }); 
+    document.querySelectorAll('.alphabet-item').forEach(function(letter) {
+        letter.addEventListener('click', function(e) {
+            guessLetter(e.target);
+            // check if game is over
+                // if so, run initEnd
+                // else do add money thing, minues lives thing
+        })
+    }); 
     nextQuestion.addEventListener('click', generateQuestion )
-    document.getElementById("clue").addEventListener('click', function() {
-        document.getElementById("clue").style.visibility= "hidden";
-        generateQuestion()
+
+    //add event listener to clue button
+    document.getElementById("clue-btn").addEventListener('click', function() {
+        console.log('give me a clue!')
+        //make clue unhidden by removing the 'hidden' class on the child p of #clue
+        document.querySelector('#clue > p').classList.remove('hidden')
+
     })
     wheelValue = document.getElementById("message"); {
         initGame() 
     }
     wheelButton =  document.getElementById("wheelButton") 
+
     wheelButton.addEventListener('click',function() {
         wheelSpin();
     })
-    if (gameOver !== false) {
-        winner();
-    }
-    checkIfGameOver()
+
+    document.getElementById("submit").addEventListener('click', function(e) {
+        e.preventDefault()
+        console.log("submit")
+        // Going to go in your event listener for your submit btn
+        guess = document.getElementById('guess').value
+        // call initEnd
+        initEnd(guess, question.answer)
+    })
 })
