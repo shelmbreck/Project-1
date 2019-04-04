@@ -152,12 +152,9 @@ var questions = [
 var lives = 5;
 var money = 1000;
 var question;
-var showAnswer;
 var chars;
 var grid;
 var wheelValue;
-var wheelNumber;
-var wheelSpin;
 var clues;
 var guessArray = []
 var guess;
@@ -167,6 +164,7 @@ var interval
 //generate random questions from the questions array
 function generateQuestion() {
     resetGame()
+    document.getElementById('player-bank').textContent = "$" + money
     question = questions[Math.floor(Math.random() * questions.length)]
     document.querySelector('#category').textContent = question.category
     document.querySelector('#clue > p').textContent = question.clue
@@ -183,9 +181,7 @@ function generateQuestion() {
 function guessLetter(letter) {
     if(!checkIfGameOver()) {
         document.getElementById('lives').textContent = lives
-        console.log(lives)
         document.getElementById('player-bank').textContent = "$" + money
-        console.log(money)
         lives--;
         money -= alphabetValue[letter.id.toLowerCase()]
         if (chars.indexOf(letter.id) > -1) {
@@ -220,22 +216,6 @@ function initGame() {
     generateQuestion() 
 }
 
-// Mike's old code NOOOOOOOOOOOOOOO NEEEEEEEEEED
-// function winner() {
-//     var guessedGrid = document.querySelectorAll('.grid-item'); 
-//     var guessArray = [] 
-
-//     guessedGrid.forEach( function(space) {  
-//         guessArray.push(space.textContent); 
-//     })                                      
-
-//     var guess = guessArray.join('') 
-//     if (guess === question.answer.replace(/\s/g,'') ) { 
-//         generateQuestion()
-//         document.getElementById('#message-box').textContent = wheelValues;
-//     }
-// }
-
 function getMoney () {
     //playerBank decreases in alphabet value with each guess
     //playerBank increases in value if you win
@@ -247,9 +227,7 @@ function wheelSpin() {
     var arr = Object.keys(wheelValues)
     var index = Math.floor(Math.random() * arr.length)
     var actualDegrees = Math.round(arr[index] * 15)
-    console.log(actualDegrees)
     degrees += actualDegrees + 1080
-    console.log(degrees)
     imageDegrees.style.transform = "rotate(" + degrees + "deg)"
     imageDegrees.style.transition = 'all 0.5s ease-out';
     
@@ -257,14 +235,6 @@ function wheelSpin() {
 }
 
 function resetGame () {
-    document.querySelector('#clue > p').classList.add('hidden')
-    var grid = document.getElementsByClassName('grid-item');
-    for (let i = 0; i < grid.length; i++) {
-        grid[i].style.background = "-webkit-linear-gradient(#4caf50, #66bb6a, #81c784)"
-        // reset grid[i]'s text content to be ""
-        grid[i].textContent = ''
-    }
-    // document.getElementById('player-bank').textContent = $ + money
     lives = 5
     document.getElementById('message-box').textContent = ''
     document.getElementById('guess').value = ''
@@ -272,21 +242,30 @@ function resetGame () {
     for (let i = 0; i < alph.length; i++) {
         alph[i].style.background = "rgba(0,0,0,0.5)"
     }
+
+    document.querySelector('#clue > p').classList.add('hidden')
+    var grid = document.getElementsByClassName('grid-item');
+    for (let i = 0; i < grid.length; i++) {
+        grid[i].style.background = "-webkit-linear-gradient(#4caf50, #66bb6a, #81c784)"
+        grid[i].textContent = ''
+    }
 }
 
 function initEnd(guess, answer) {
     if(guess.toUpperCase() === answer){
-        console.log("You rock")
         populateAnswer()
     } else{
-        // TODO write youSuck() and call it
-        console.log("You suck")
+        youSuck()
     }
 }
 
+//TODO populate answer on grid-continer
 function populateAnswer() {
-    // TODO
-    console.log("TODO: populate answer")
+}
+
+//TODO write lose function 
+function youSuck() {
+
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -306,11 +285,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //add event listener to clue button
     document.getElementById("clue-btn").addEventListener('click', function() {
-        console.log('give me a clue!')
         //make clue unhidden by removing the 'hidden' class on the child p of #clue
         document.querySelector('#clue > p').classList.remove('hidden')
-
     })
+
     wheelValue = document.getElementById("message"); {
         initGame() 
     }
@@ -322,10 +300,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("submit").addEventListener('click', function(e) {
         e.preventDefault()
-        console.log("submit")
         // Going to go in your event listener for your submit btn
         guess = document.getElementById('guess').value
         // call initEnd
         initEnd(guess, question.answer)
+    })
+
+    document.getElementById('next').addEventListener('click', function() {
+        resetGame()
     })
 })
