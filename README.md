@@ -30,6 +30,14 @@ Functions:
   - wheelSpin
   - resetGame
   - populateAnswer (didn't implement this one yet)
+  
+  ## Technologies Used :
+    -HTML:
+      - Grid
+      - Form
+    - CSS:
+      - Flexbox
+    - JavaScript
 
 
 ## Bugs: 
