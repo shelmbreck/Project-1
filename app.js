@@ -254,7 +254,7 @@ function resetGame () {
 function initEnd(guess, answer) {
     if(guess.toUpperCase() === answer){
         populateAnswer()
-    } else{
+    } else {
         youSuck()
     }
 }
@@ -310,3 +310,4 @@ document.addEventListener("DOMContentLoaded", function() {
         resetGame()
     })
 })
+
