@@ -33,8 +33,21 @@ Functions:
 
 
 ## Bugs: 
--Getting the wheel image to stop bouncing.(Fixed: the wheel image and the div we're not the same size.)
--Correct amount of degrees of the wheel to turn, so it lands at the same spot everytime.
+
+- Getting the wheel image to stop bouncing.(Fixed: the wheel image and the div we're not the same size.)
+- Correct amount of degrees of the wheel to turn, so it lands at the same spot everytime.
+- Getting the money amount to display at the start of the game 
+- No break point on grid-container (one word on multiple lines)
+- Getting everything to center correctly
 
 ## Things I didn't complete:
 
+- Getting the board to autofill when you submit the correct guess
+- adding the amount you win to the playerbank when you win
+
+## Things I would do if I had more time
+
+- Getting the board to autofill when you submit the correct guess
+- adding the amount you win to the playerbank when you win
+- update the css, so everything is centered and aligns up correctly
+- sound effects
