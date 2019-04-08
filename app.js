@@ -1,60 +1,32 @@
 var letters = [ 'a' , 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 
 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ]
-// Value of each alphabet letter that will be decreased/added from/to your playerbank with each guess
-var alphabetValue = {
-    a: 90, 
-    b: 80, 
-    c: 95, 
-    d: 50, 
-    e: 90, 
-    f: 70,
-    g: 60,
-    h: 60,
-    i: 90,
-    j: 70,
-    k: 70,
-    l: 85,
-    m: 90,
-    n: 70,
-    o: 90,
-    p: 60,
-    q: 65,
-    r: 70,
-    s: 70,
-    t: 50,
-    u: 80,
-    v: 95,
-    w: 65,
-    x: 90,
-    y: 90,
-    z: 70,
-}
+
 // value of each section of the wheel
 var wheelValues = {
-    0 : 500, 
-    1: 900, 
-    2: 700, 
-    3: 300, 
-    4: 800, 
-    5: 550, 
-    6: 400, 
-    7: 500, 
-    8: 600, 
-    9: 350, 
-    10: 500, 
-    11: 900, 
-    12: 0, 
-    13: 650, 
-    14: 1000, 
-    15: 700, 
-    16: 0, 
-    17: 800,
-    18: 500, 
-    19: 450, 
-    20: 500, 
-    21: 300, 
-    22: 0, 
-    23: 5000
+    0: 5000,
+    1: 0,
+    2: 300,
+    3: 500,
+    4: 450,
+    5: 500,
+    6: 800,
+    7: 0,
+    8: 700,
+    9: 1000,
+    10: 650,
+    11: 0,
+    12: 900,
+    13: 500,
+    14: 350,
+    15: 600,
+    16: 500,
+    17: 400,
+    18: 550,
+    19: 800,
+    20: 300,
+    21: 700,
+    22: 900,
+    23: 500
 }
 // categoty/answer/clue that is generated in the generateQuestion function
 var questions = [
@@ -115,7 +87,7 @@ var questions = [
     },
     {
         category: 'Slogans, slogans, slogans?',
-        answer: "CAN YOU HEAR ME NOW?",
+        answer: "CAN YOU HEAR ME NOW",
         clue: 'Phone'
     },
     {
@@ -150,7 +122,7 @@ var questions = [
     }
 ]
 var lives = 5;
-var money = 1000;
+var money = 0;
 var question;
 var chars;
 var grid;
@@ -164,7 +136,9 @@ var interval
 //generate random questions from the questions array
 function generateQuestion() {
     resetGame()
-    document.getElementById('player-bank').textContent = "$" + money
+    // document.getElementById("chant").play()
+    document.getElementById('player-bank').textContent = "Money: $" + money
+    document.getElementById('lives').textContent = "Guesses left: " + lives
     question = questions[Math.floor(Math.random() * questions.length)]
     document.querySelector('#category').textContent = question.category
     document.querySelector('#clue > p').textContent = question.clue
@@ -179,26 +153,25 @@ function generateQuestion() {
 
 //lives decrease with each guess
 function guessLetter(letter) {
+    document.getElementById('lives').textContent = "Guesses left: " + lives
+    document.getElementById('player-bank').textContent = "Money: $" + money
     if(!checkIfGameOver()) {
-        document.getElementById('lives').textContent = lives
-        document.getElementById('player-bank').textContent = "$" + money
-        lives--;
-        money -= alphabetValue[letter.id.toLowerCase()]
         if (chars.indexOf(letter.id) > -1) {
             for (var i = 0; i < chars.length; i++) {
                 if(chars[i] === letter.id) {
                     grid[i].textContent=letter.id;
+                    letter.style.background = 'green'
                 }
             }
         } else {
             letter.style.background = 'red'
+            document.getElementById('buzzer').play()
+            lives--;
             // player bank increses in value 
         }
-        //money - alphabetValue.getElementById('player-bank')
-        //money + alphabetValue.getElementById('player-bank')
     } else {
         // prompt them to guess
-        document.getElementById('message-box').textContent = "No more lives, take a guess!"
+        document.getElementById('message-box').textContent = "Take a guess!"
     }
 
 }
@@ -217,8 +190,13 @@ function initGame() {
 }
 
 function getMoney () {
-    //playerBank decreases in alphabet value with each guess
-    //playerBank increases in value if you win
+    // TODO check if answer is correct
+    if(youDontSuck()) {
+        bank = document.getElementById('player-bank').textContent
+        wheelValues += bank
+    } else {
+        youSuck()
+    }
 }
 
 //Make wheel rotate
@@ -227,15 +205,16 @@ function wheelSpin() {
     var arr = Object.keys(wheelValues)
     var index = Math.floor(Math.random() * arr.length)
     var actualDegrees = Math.round(arr[index] * 15)
-    degrees += actualDegrees + 1080
+    degrees += actualDegrees + 720
     imageDegrees.style.transform = "rotate(" + degrees + "deg)"
-    imageDegrees.style.transition = 'all 0.5s ease-out';
+    imageDegrees.style.transition = 'all 3s ease-out';
     
     document.getElementById('message-box').textContent = wheelValues[arr[index]]
 }
 
 function resetGame () {
     lives = 5
+    document.getElementById('player-bank').textContent = "Money:" + " "+ "$" + money
     document.getElementById('message-box').textContent = ''
     document.getElementById('guess').value = ''
     var alph = document.getElementsByClassName('alphabet-item');
@@ -253,19 +232,27 @@ function resetGame () {
 
 function initEnd(guess, answer) {
     if(guess.toUpperCase() === answer){
-        populateAnswer()
+        // populateAnswer()
+        youDontSuck()
     } else {
         youSuck()
     }
 }
 
 //TODO populate answer on grid-continer
-function populateAnswer() {
-}
+// function populateAnswer() {
+// }
 
+
+//TODO write a win function 
+function youDontSuck() {
+    console.log("you're cool")
+    document.getElementById('message-box').textContent = "You're awesome! Go to the next question"
+}
 //TODO write lose function 
 function youSuck() {
-
+    console.log("you're a loser")
+    document.getElementById('message-box').textContent = "Game over, try again"
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -297,17 +284,12 @@ document.addEventListener("DOMContentLoaded", function() {
     wheelButton.addEventListener('click',function() {
         wheelSpin();
     })
-
     document.getElementById("submit").addEventListener('click', function(e) {
         e.preventDefault()
         // Going to go in your event listener for your submit btn
         guess = document.getElementById('guess').value
         // call initEnd
-        initEnd(guess, question.answer)
-    })
-
-    document.getElementById('next').addEventListener('click', function() {
-        resetGame()
+        initEnd(guess, question.answer) 
     })
 })
 

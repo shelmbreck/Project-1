@@ -39,7 +39,7 @@ body {
     justify-content: center;
     color: white;
     font-family: 'Julius Sans One', sans-serif;
-    font-size: 60px;
+    font-size: 30px;
 }
 
 #title {
@@ -67,14 +67,18 @@ body {
                         " . fourty-one fourty-two fourty-three fourty-four fourty-five fourty-six fourty-seven fourty-eight fourty-nine fifty fifty-one fifty-two .  ";
     grid-column-gap: 3px;
     grid-row-gap: 3px;
+    white-space: nowrap; /* Don't break up words */
 }
 
 .grid-item {
+    display: flex;
     background: -webkit-linear-gradient(#4caf50, #66bb6a, #81c784);
     border: 5px rgb(49, 49, 49) solid;
     padding: 16px;
     font-size: 25px;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     width: 50px;
     height: 8px;
 }
@@ -136,6 +140,9 @@ body {
 }
 #wheelButton, #next {
     display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
     background-color: rgba(0,0,0,0.5);
     color: white;
     border: 1px rgba(71, 12, 73, 0.5) solid;
@@ -150,6 +157,9 @@ body {
 
 #clue-btn, #submit {
     display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
     background-color: rgba(0,0,0,0.5);
     color: white;
     border: 1px rgba(71, 12, 73, 0.5) solid;
@@ -163,6 +173,9 @@ body {
 }
 #clue, #guess {
     display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
     background-color: rgba(0,0,0,0.5);
     color: white;
     border: 1px rgba(71, 12, 73, 0.5) solid;
@@ -181,13 +194,16 @@ body {
 
 #message-box {
     display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
     background-color: rgba(0,0,0,0.5);
     color: white;
     border: 1px rgba(71, 12, 73, 0.5) solid;
     box-shadow: 0px 0px 5px 5px black;
     border-radius: 8px;
     font-family: 'Julius Sans One', sans-serif;
-    font-size: 50px;
+    font-size: 38px;
     padding: 5px;
     width: 290px;
     height: 200px;
@@ -200,8 +216,9 @@ body {
 }
 
 #guess-container {
-    text-align: center;
     align-items: center;
+    text-align: center;
+    justify-content: center;
     border: 1px white solid;
 }
 
