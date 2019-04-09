@@ -136,7 +136,7 @@ var interval
 //generate random questions from the questions array
 function generateQuestion() {
     resetGame()
-    // document.getElementById("chant").play()
+    document.getElementById('chant').play()
     document.getElementById('player-bank').textContent = "Money: $" + money
     document.getElementById('lives').textContent = "Guesses left: " + lives
     question = questions[Math.floor(Math.random() * questions.length)]
@@ -146,22 +146,15 @@ function generateQuestion() {
     grid = document.getElementsByClassName('grid-item');
     for (let i = 0; i < chars.length; i++) {
         if (chars[i] !== ' ') {
-            console.log(chars[i])
             grid[i].style.background = 'white';
-            // add a hidden p tag to each grid item
-                //create a p tag
                 var p = document.createElement('p')
-                // add hidden class to said p tag
                 p.classList.add('hidden')
-                // set text content of the p tag
                 p.textContent = chars[i]
-                // append to grid item
                 grid[i].appendChild(p)
         }
     }
 }
 
-//lives decrease with each guess
 function guessLetter(letter) {
     document.getElementById('lives').textContent = "Guesses left: " + lives
     document.getElementById('player-bank').textContent = "Money: $" + money
@@ -169,25 +162,21 @@ function guessLetter(letter) {
         if (chars.indexOf(letter.id) > -1) {
             for (var i = 0; i < chars.length; i++) {
                 if(chars[i] === letter.id) {
-                    // remove the hidden class from the child node of grid[i]
                     grid[i].childNodes[0].classList.remove('hidden')
                     letter.style.background = 'green'
                 }
             }
         } else {
             letter.style.background = 'red'
-            // document.getElementById('buzzer').play()
+            document.getElementById('buzzer').play()
             lives--;
-            // player bank increses in value 
         }
     } else {
-        // prompt them to guess
         document.getElementById('message-box').textContent = "Take a guess!"
     }
 
 }
 
-// check if the game is over, display if the game is over or go to the next question
 function checkIfGameOver() {
     if(lives < 1) {
         return true
@@ -200,13 +189,13 @@ function initGame() {
     generateQuestion() 
 }
 
-//Make wheel rotate
 function wheelSpin() {
     var imageDegrees = document.getElementById('wheel')
     var arr = Object.keys(wheelValues)
     var index = Math.floor(Math.random() * arr.length)
     var actualDegrees = Math.round(arr[index] * 15)
     degrees += actualDegrees + 720
+	degrees += (360 - (degrees % 360))
     imageDegrees.style.transform = "rotate(" + degrees + "deg)"
     imageDegrees.style.transition = 'all 3s ease-out';
     wheelValue = wheelValues[arr[index]]
@@ -240,7 +229,6 @@ function initEnd(guess, answer) {
     }
 }
 
-//TODO populate answer on grid-continer
 function populateAnswer() {
     for(var i = 0; i < chars.length; i++) {
         if (chars[i] != ' ') {
@@ -249,54 +237,37 @@ function populateAnswer() {
     }
 }
 
-
-//TODO write a win function 
 function youDontSuck() {
     money += wheelValue
     document.getElementById('player-bank').textContent = "Money: $" + money
     document.getElementById('message-box').textContent = "You're awesome! Go to the next question"
 }
 
-//TODO write lose function 
 function youSuck() {
-    console.log("you're a loser")
     document.getElementById('message-box').textContent = "Game over, try again"
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // this will need to go in your click functions
     document.getElementById("lives").textContent = lives
-
     var nextQuestion = document.getElementById("next")
     document.querySelectorAll('.alphabet-item').forEach(function(letter) {
         letter.addEventListener('click', function(e) {
             guessLetter(e.target);
-            // check if game is over
-                // if so, run initEnd
-                // else do add money thing, minues lives thing
         })
     }); 
     nextQuestion.addEventListener('click', generateQuestion )
-
-    //add event listener to clue button
     document.getElementById("clue-btn").addEventListener('click', function() {
         //make clue unhidden by removing the 'hidden' class on the child p of #clue
         document.querySelector('#clue > p').classList.remove('hidden')
     })
-
-    wheelValue = document.getElementById("message"); {
-        initGame() 
-    }
+    initGame() 
     wheelButton =  document.getElementById("wheelButton") 
-
     wheelButton.addEventListener('click',function() {
         wheelSpin();
     })
     document.getElementById("submit").addEventListener('click', function(e) {
         e.preventDefault()
-        // Going to go in your event listener for your submit btn
         guess = document.getElementById('guess').value
-        // call initEnd
         initEnd(guess, question.answer) 
     })
 })
