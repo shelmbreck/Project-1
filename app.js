@@ -146,7 +146,17 @@ function generateQuestion() {
     grid = document.getElementsByClassName('grid-item');
     for (let i = 0; i < chars.length; i++) {
         if (chars[i] !== ' ') {
+            console.log(chars[i])
             grid[i].style.background = 'white';
+            // add a hidden p tag to each grid item
+                //create a p tag
+                var p = document.createElement('p')
+                // add hidden class to said p tag
+                p.classList.add('hidden')
+                // set text content of the p tag
+                p.textContent = chars[i]
+                // append to grid item
+                grid[i].appendChild(p)
         }
     }
 }
@@ -159,13 +169,14 @@ function guessLetter(letter) {
         if (chars.indexOf(letter.id) > -1) {
             for (var i = 0; i < chars.length; i++) {
                 if(chars[i] === letter.id) {
-                    grid[i].textContent=letter.id;
+                    // remove the hidden class from the child node of grid[i]
+                    grid[i].childNodes[0].classList.remove('hidden')
                     letter.style.background = 'green'
                 }
             }
         } else {
             letter.style.background = 'red'
-            document.getElementById('buzzer').play()
+            // document.getElementById('buzzer').play()
             lives--;
             // player bank increses in value 
         }
@@ -189,16 +200,6 @@ function initGame() {
     generateQuestion() 
 }
 
-function getMoney () {
-    // TODO check if answer is correct
-    if(youDontSuck()) {
-        bank = document.getElementById('player-bank').textContent
-        wheelValues += bank
-    } else {
-        youSuck()
-    }
-}
-
 //Make wheel rotate
 function wheelSpin() {
     var imageDegrees = document.getElementById('wheel')
@@ -208,8 +209,8 @@ function wheelSpin() {
     degrees += actualDegrees + 720
     imageDegrees.style.transform = "rotate(" + degrees + "deg)"
     imageDegrees.style.transition = 'all 3s ease-out';
-    
-    document.getElementById('message-box').textContent = wheelValues[arr[index]]
+    wheelValue = wheelValues[arr[index]]
+    document.getElementById('message-box').textContent = wheelValue
 }
 
 function resetGame () {
@@ -231,8 +232,8 @@ function resetGame () {
 }
 
 function initEnd(guess, answer) {
+    populateAnswer()
     if(guess.toUpperCase() === answer){
-        // populateAnswer()
         youDontSuck()
     } else {
         youSuck()
@@ -240,15 +241,22 @@ function initEnd(guess, answer) {
 }
 
 //TODO populate answer on grid-continer
-// function populateAnswer() {
-// }
+function populateAnswer() {
+    for(var i = 0; i < chars.length; i++) {
+        if (chars[i] != ' ') {
+            grid[i].childNodes[0].classList.remove('hidden')
+        }
+    }
+}
 
 
 //TODO write a win function 
 function youDontSuck() {
-    console.log("you're cool")
+    money += wheelValue
+    document.getElementById('player-bank').textContent = "Money: $" + money
     document.getElementById('message-box').textContent = "You're awesome! Go to the next question"
 }
+
 //TODO write lose function 
 function youSuck() {
     console.log("you're a loser")
