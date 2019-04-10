@@ -1,5 +1,6 @@
-var letters = [ 'a' , 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 
-'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ]
+// var letters = [ 'a' , 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 
+// 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ]
+var SPIN_TWICE = 720
 
 // value of each section of the wheel
 var wheelValues = {
@@ -133,6 +134,10 @@ var guess;
 var degrees = 0;
 var interval
 
+
+function generateGame() {
+    
+}
 //generate random questions from the questions array
 function generateQuestion() {
     resetGame()
@@ -157,15 +162,18 @@ function generateQuestion() {
 
 function guessLetter(letter) {
     document.getElementById('lives').textContent = "Guesses left: " + lives
-    document.getElementById('player-bank').textContent = "Money: $" + money
     if(!checkIfGameOver()) {
+        var counter = 0
         if (chars.indexOf(letter.id) > -1) {
             for (var i = 0; i < chars.length; i++) {
                 if(chars[i] === letter.id) {
+                    counter++
                     grid[i].childNodes[0].classList.remove('hidden')
                     letter.style.background = 'green'
                 }
             }
+            money += (counter * wheelValue)
+            document.getElementById('player-bank').textContent = "Money: $" + money
         } else {
             letter.style.background = 'red'
             document.getElementById('buzzer').play()
@@ -174,7 +182,6 @@ function guessLetter(letter) {
     } else {
         document.getElementById('message-box').textContent = "Take a guess!"
     }
-
 }
 
 function checkIfGameOver() {
@@ -190,16 +197,22 @@ function initGame() {
 }
 
 function wheelSpin() {
-    var imageDegrees = document.getElementById('wheel')
+    var wheel = document.getElementById('wheel')
     var arr = Object.keys(wheelValues)
     var index = Math.floor(Math.random() * arr.length)
     var actualDegrees = Math.round(arr[index] * 15)
-    degrees += actualDegrees + 720
-	degrees += (360 - (degrees % 360))
-    imageDegrees.style.transform = "rotate(" + degrees + "deg)"
-    imageDegrees.style.transition = 'all 3s ease-out';
+    degrees += (360 - (degrees % 360))
+    degrees += actualDegrees + SPIN_TWICE
+    wheel.style.transform = "rotate(" + degrees + "deg)"
+    wheel.style.transition = 'all 3s ease-out'
+
+    // Set the money value
     wheelValue = wheelValues[arr[index]]
     document.getElementById('message-box').textContent = wheelValue
+
+    if(wheelValue === 0){
+        // Bankrupt
+    }
 }
 
 function resetGame () {
@@ -248,6 +261,11 @@ function youSuck() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    // Clears opening page
+    document.getElementById('play-button').addEventListener('click', function() {
+        console.log("clc")
+        document.querySelector('.opening-page').classList.add('hidden')
+    })
     document.getElementById("lives").textContent = lives
     var nextQuestion = document.getElementById("next")
     document.querySelectorAll('.alphabet-item').forEach(function(letter) {
