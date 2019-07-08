@@ -1,131 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Wheel Of Fortune</title>
-    <link rel="stylesheet" href="./style.css">
-    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wheel Of Fortune</title>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
 </head>
 <body>
-    <div class="first-flex-container">
-        <div id="player-bank">Money</div>
-        <div id="title">Wheel Of Fortune</div>
-        <div id="lives">Chances left:</div>
-    </div>
-    <div class="grid-container">
-        <div class="grid-item" id="one"></div>
-        <div class="grid-item" id="two"></div>
-        <div class="grid-item" id="three"></div>
-        <div class="grid-item" id="four"></div>
-        <div class="grid-item" id="five"></div>
-        <div class="grid-item" id="six"></div>
-        <div class="grid-item" id="seven"></div>
-        <div class="grid-item" id="eight"></div>
-        <div class="grid-item" id="nine"></div>
-        <div class="grid-item" id="ten"></div>
-        <div class="grid-item" id="eleven"></div>
-        <div class="grid-item" id="twelve"></div>
-        <div class="grid-item" id="thirteen"></div>
-        <div class="grid-item" id="fourteen"></div>
-        <div class="grid-item" id="fifteen"></div>
-        <div class="grid-item" id="sixteen"></div>
-        <div class="grid-item" id="seventeen"></div>
-        <div class="grid-item" id="eighteen"></div>
-        <div class="grid-item" id="nineteen"></div>
-        <div class="grid-item" id="twenty"></div>
-        <div class="grid-item" id="twenty-one"></div>
-        <div class="grid-item" id="twenty-two"></div>
-        <div class="grid-item" id="twenty-three"></div>
-        <div class="grid-item" id="twenty-four"></div>
-        <div class="grid-item" id="twenty-five"></div>
-        <div class="grid-item" id="twenty-seven"></div>
-        <div class="grid-item" id="twenty-eight"></div>
-        <div class="grid-item" id="twenty-nine"></div>
-        <div class="grid-item" id="thirty"></div>
-        <div class="grid-item" id="thirty-one"></div>
-        <div class="grid-item" id="thirty-two"></div>
-        <div class="grid-item" id="thirty-three"></div>
-        <div class="grid-item" id="thirty-four"></div>
-        <div class="grid-item" id="thirty-five"></div>
-        <div class="grid-item" id="thirty-six"></div>
-        <div class="grid-item" id="thirty-seven"></div>
-        <div class="grid-item" id="thirty-eight"></div>
-        <div class="grid-item" id="thirty-nine"></div>
-        <div class="grid-item" id="fourty"></div>
-        <div class="grid-item" id="fourty-one"></div>
-        <div class="grid-item" id="fourty-two"></div>
-        <div class="grid-item" id="fourty-three"></div>
-        <div class="grid-item" id="fourty-four"></div>
-        <div class="grid-item" id="fourty-five"></div>
-        <div class="grid-item" id="fourty-six"></div>
-        <div class="grid-item" id="fourty-seven"></div>
-        <div class="grid-item" id="fourty-eight"></div>
-        <div class="grid-item" id="fourty-nine"></div>
-        <div class="grid-item" id="fifty"></div>
-        <div class="grid-item" id="fifty-one"></div>
-        <div class="grid-item" id="fifty-two"></div>
-        <div class="grid-item" id="twenty-six"></div>
-    </div>
-    <div class="second-flex-container">
-        <div class="column">
-            <div id="wheel"><img src="./img/kgdR2CnU_400x400.png"></div>
-        </div>
-    <div class="column">
-        <button id="wheelButton">Show Me The Money</button>
-        <br>
-        <div id="message-box"></div>
-        <br>
-        <button id="next">Next Question</button> 
-    </div>
-    <div class="column">
-        <div id="category"></div>
-        <div class="alphabet-grid">
-            <div class="alphabet-item" id="A">A</div>
-            <div class="alphabet-item" id="B">B</div>
-            <div class="alphabet-item" id="C">C</div>
-            <div class="alphabet-item" id="D">D</div>
-            <div class="alphabet-item" id="E">E</div>
-            <div class="alphabet-item" id="F">F</div>
-            <div class="alphabet-item" id="G">G</div>
-            <div class="alphabet-item" id="H">H</div>
-            <div class="alphabet-item" id="I">I</div>
-            <div class="alphabet-item" id="J">J</div>
-            <div class="alphabet-item" id="K">K</div>
-            <div class="alphabet-item" id="L">L</div>
-            <div class="alphabet-item" id="M">M</div>
-            <div class="alphabet-item" id="N">N</div>
-            <div class="alphabet-item" id="O">O</div>
-            <div class="alphabet-item" id="P">P</div>
-            <div class="alphabet-item" id="Q">Q</div>
-            <div class="alphabet-item" id="R">R</div>
-            <div class="alphabet-item" id="S">S</div>
-            <div class="alphabet-item" id="T">T</div>
-            <div class="alphabet-item" id="U">U</div>
-            <div class="alphabet-item" id="V">V</div>
-            <div class="alphabet-item" id="W">W</div>
-            <div class="alphabet-item" id="X">X</div>
-            <div class="alphabet-item" id="Y">Y</div>
-            <div class="alphabet-item" id="Z">Z</div>
-        </div>
-        <div class="clue-category">
-            <button id="clue-btn">Get a clue</button>
-            <br>
-        <div id="clue">
-            <p class="hidden"></p>
-        </div>
-        </div>
-        <br>
-        <div class="guess-category">
-            <form class="form">
-                <input id="guess" type="text" placeholder="What's your guess?">
-                <button id="submit" type="submit" value="Submit">Submit</button>
-            </form>
-        </div>
-        </div>
-    </div>
+  <div class="first-flex-container">
+    <div id="player-bank">Money</div>
+    <div id="title">Wheel Of Fortune</div>
+    <div id="lives">Chances left:</div>
+  </div>
+  <div class="grid-container">
+    <div class="grid-item" id="one"></div>
+    <div class="grid-item" id="two"></div>
+    <div class="grid-item" id="three"></div>
+    <div class="grid-item" id="four"></div>
+    <div class="grid-item" id="five"></div>
+    <div class="grid-item" id="six"></div>
+    <div class="grid-item" id="seven"></div>
+    <div class="grid-item" id="eight"></div>
+    <div class="grid-item" id="nine"></div>
+    <div class="grid-item" id="ten"></div>
+    <div class="grid-item" id="eleven"></div>
+    <div class="grid-item" id="twelve"></div>
+    <div class="grid-item" id="thirteen"></div>
+    <div class="grid-item" id="fourteen"></div>
+    <div class="grid-item" id="fifteen"></div>
+    <div class="grid-item" id="sixteen"></div>
+    <div class="grid-item" id="seventeen"></div>
+    <div class="grid-item" id="eighteen"></div>
+    <div class="grid-item" id="nineteen"></div>
+    <div class="grid-item" id="twenty"></div>
+    <div class="grid-item" id="twenty-one"></div>
+    <div class="grid-item" id="twenty-two"></div>
+    <div class="grid-item" id="twenty-three"></div>
+    <div class="grid-item" id="twenty-four"></div>
+    <div class="grid-item" id="twenty-five"></div>
+    <div class="grid-item" id="twenty-seven"></div>
+    <div class="grid-item" id="twenty-eight"></div>
+    <div class="grid-item" id="twenty-nine"></div>
+    <div class="grid-item" id="thirty"></div>
+    <div class="grid-item" id="thirty-one"></div>
+    <div class="grid-item" id="thirty-two"></div>
+    <div class="grid-item" id="thirty-three"></div>
+    <div class="grid-item" id="thirty-four"></div>
+    <div class="grid-item" id="thirty-five"></div>
+    <div class="grid-item" id="thirty-six"></div>
+    <div class="grid-item" id="thirty-seven"></div>
+    <div class="grid-item" id="thirty-eight"></div>
+    <div class="grid-item" id="thirty-nine"></div>
+    <div class="grid-item" id="fourty"></div>
+    <div class="grid-item" id="fourty-one"></div>
+    <div class="grid-item" id="fourty-two"></div>
+    <div class="grid-item" id="fourty-three"></div>
+    <div class="grid-item" id="fourty-four"></div>
+    <div class="grid-item" id="fourty-five"></div>
+    <div class="grid-item" id="fourty-six"></div>
+    <div class="grid-item" id="fourty-seven"></div>
+    <div class="grid-item" id="fourty-eight"></div>
+    <div class="grid-item" id="fourty-nine"></div>
+    <div class="grid-item" id="fifty"></div>
+    <div class="grid-item" id="fifty-one"></div>
+    <div class="grid-item" id="fifty-two"></div>
+    <div class="grid-item" id="twenty-six"></div>
+  </div>
+  <div class="second-flex-container">
+  <div class="column">
+  <div id="wheel"><img src="./img/kgdR2CnU_400x400.png"></div>
+  </div>
+  <div class="column">
+    <button id="wheelButton">Show Me The Money</button>
+    <br>
+    <div id="message-box"></div>
+    <br>
+    <button id="next">Next Question</button> 
+  </div>
+  <div class="column">
+  <div id="category"></div>
+  <div class="alphabet-grid">
+    <div class="alphabet-item" id="A">A</div>
+    <div class="alphabet-item" id="B">B</div>
+    <div class="alphabet-item" id="C">C</div>
+    <div class="alphabet-item" id="D">D</div>
+    <div class="alphabet-item" id="E">E</div>
+    <div class="alphabet-item" id="F">F</div>
+    <div class="alphabet-item" id="G">G</div>
+    <div class="alphabet-item" id="H">H</div>
+    <div class="alphabet-item" id="I">I</div>
+    <div class="alphabet-item" id="J">J</div>
+    <div class="alphabet-item" id="K">K</div>
+    <div class="alphabet-item" id="L">L</div>
+    <div class="alphabet-item" id="M">M</div>
+    <div class="alphabet-item" id="N">N</div>
+    <div class="alphabet-item" id="O">O</div>
+    <div class="alphabet-item" id="P">P</div>
+    <div class="alphabet-item" id="Q">Q</div>
+    <div class="alphabet-item" id="R">R</div>
+    <div class="alphabet-item" id="S">S</div>
+    <div class="alphabet-item" id="T">T</div>
+    <div class="alphabet-item" id="U">U</div>
+    <div class="alphabet-item" id="V">V</div>
+    <div class="alphabet-item" id="W">W</div>
+    <div class="alphabet-item" id="X">X</div>
+    <div class="alphabet-item" id="Y">Y</div>
+    <div class="alphabet-item" id="Z">Z</div>
+  </div>
+  <div class="clue-category">
+    <button id="clue-btn">Get a clue</button>
+    <br>
+  <div id="clue">
+    <p class="hidden"></p>
+  </div>
+  </div>
+    <br>
+  <div class="guess-category">
+    <form class="form">
+      <input id="guess" type="text" placeholder="What's your guess?">
+      <button id="submit" type="submit" value="Submit">Submit</button>
+    </form>
+  </div>
     <audio id="buzzer" src="./sounds/Buzzer.mp4"></audio>
     <audio id="chant" src="./sounds/WOF_CHANT 2.mp4"></audio> 
     <script src="./app.js"></script> 
