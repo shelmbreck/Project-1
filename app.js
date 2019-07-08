@@ -1,127 +1,126 @@
-// var letters = [ 'a' , 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 
-// 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ]
 var SPIN_TWICE = 720
 
 // value of each section of the wheel
 var wheelValues = {
-    0: 5000,
-    1: 0,
-    2: 300,
-    3: 500,
-    4: 450,
-    5: 500,
-    6: 800,
-    7: 0,
-    8: 700,
-    9: 1000,
-    10: 650,
-    11: 0,
-    12: 900,
-    13: 500,
-    14: 350,
-    15: 600,
-    16: 500,
-    17: 400,
-    18: 550,
-    19: 800,
-    20: 300,
-    21: 700,
-    22: 900,
-    23: 500
+  0: 5000,
+  1: 0,
+  2: 300,
+  3: 500,
+  4: 450,
+  5: 500,
+  6: 800,
+  7: 0,
+  8: 700,
+  9: 1000,
+  10: 650,
+  11: 0,
+  12: 900,
+  13: 500,
+  14: 350,
+  15: 600,
+  16: 500,
+  17: 400,
+  18: 550,
+  19: 800,
+  20: 300,
+  21: 700,
+  22: 900,
+  23: 500
 }
 // categoty/answer/clue that is generated in the generateQuestion function
 var questions = [
-    {
-        category: 'Name that movie quote!',
-        answer: 'BYE FELICIA',
-        clue: 'Hello Felicia'
-    },
-    {
-        category: 'Name that movie quote!',
-        answer: "ILL BE BACK",
-        clue: 'Arnold'
-    },
-    {
-        category: 'Name that movie quote!',
-        answer: "YOURE KILLIN ME SMALLS",
-        clue: 'Yeah Yeah'
-    },
-    {
-        category: 'Can you name the song lyrics?',
-        answer: "EYE OF THE TIGER",
-        clue: 'Rawr'
-    },
-    {
-        category: 'Can you name the song lyrics?',
-        answer: "THAT DONT IMPRESS ME MUCH",
-        clue: 'Shania'
-    },
-    {
-        category: 'Can you name the song lyrics?',
-        answer: "EVERYBODY DIES BUT NOT EVERYBODY LIVES",
-        clue: 'Drake'
-    },
-    {
-        category: 'Are you hungry?',
-        answer: "HOT FUDGE SUNDAE",
-        clue: 'Dessert'
-    },
-    {
-        category: 'Are you hungry?',
-        answer: "BAKED LASAGNA",
-        clue: 'Dinner'
-    },
-    {
-        category: 'Are you hungry?',
-        answer: "BUFFALO WINGS",
-        clue: 'Appetizer'
-    },
-    {
-        category: 'Slogans, slogans, slogans',
-        answer: "EASY BREEZY BEAUTIFUL COVERGIRL",
-        clue: 'Makeup'
-    },
-    {
-        category: 'Slogans, slogans, slogans',
-        answer: "TASTE THE RAINBOW",
-        clue: 'Candy'
-    },
-    {
-        category: 'Slogans, slogans, slogans?',
-        answer: "CAN YOU HEAR ME NOW",
-        clue: 'Phone'
-    },
-    {
-        category: 'How well do you know the 90s',
-        answer: "THE MACARENA",
-        clue: 'Dance'
-    },
-    {
-        category: 'How well do you know the 90s?',
-        answer: "SAVED BY THE BELL",
-        clue: 'High School'
-    },
-    {
-        category: 'How well do you know the 90s?',
-        answer: "BILL NYE THE SCIENCE GUY",
-        clue: 'Science'
-    },
-    {
-        category: 'Name that song!',
-        answer: "I WANT IT THAT WAY",
-        clue: 'Boy Band Era'
-    },
-    {
-        category: 'Name that song!',
-        answer: 'YOU GIVE LOVE A BAD NAME',
-        clue: '1986'
-    },
-    {
-        category: 'Name that song!',
-        answer: "CHATTAHOOCHEE",
-        clue: 'Honky Tonk'
-    }
+  {
+    category: 'Name that movie quote!',
+    answer: 'BYE FELICIA',
+    clue: 'Hello Felicia'
+  },
+  {
+    category: 'Name that movie quote!',
+    answer: "ILL BE BACK",
+    clue: 'Arnold'
+  },
+  {
+    category: 'Name that movie quote!',
+    answer: "YOURE KILLIN ME SMALLS",
+    clue: 'Yeah Yeah'
+  },
+  {
+    category: 'Can you name the song lyrics?',
+    answer: "EYE OF THE TIGER",
+    clue: 'Rawr'
+  },
+  {
+    category: 'Can you name the song lyrics?',
+    answer: "THAT DONT IMPRESS ME MUCH",
+    clue: 'Shania'
+  },
+  {
+    category: 'Can you name the song lyrics?',
+    answer: "EVERYBODY DIES BUT NOT EVERYBODY LIVES",
+    clue: 'Drake'
+  },
+  {
+    category: 'Are you hungry?',
+    answer: "HOT FUDGE SUNDAE",
+    clue: 'Dessert'
+  },
+  {
+    category: 'Are you hungry?',
+    answer: "BAKED LASAGNA",
+    clue: 'Dinner'
+  },
+  {
+    category: 'Are you hungry?',
+    answer: "BUFFALO WINGS",
+    clue: 'Appetizer'
+  },
+  {
+    category: 'Slogans, slogans, slogans',
+    answer: "EASY BREEZY BEAUTIFUL COVERGIRL",
+    clue: 'Makeup'
+  },
+  {
+    category: 'Slogans, slogans, slogans',
+    answer: "TASTE THE RAINBOW",
+    clue: 'Candy'
+  },
+  {
+    category: 'Slogans, slogans, slogans?',
+    answer: "CAN YOU HEAR ME NOW",
+    clue: 'Phone'
+  },
+  {
+    category: 'How well do you know the 90s',
+    answer: "THE MACARENA",
+    clue: 'Dance'
+  },
+  {
+    category: 'How well do you know the 90s?',
+    answer: "SAVED BY THE BELL",
+    clue: 'High School'
+  },
+  {
+    category: 'How well do you know the 90s?',
+    answer: "BILL NYE THE SCIENCE GUY",
+    clue: 'Science'
+  },
+  {
+    category: 'Name that song!',
+    answer: "I WANT IT THAT WAY",
+    clue: 'Boy Band Era'
+  },
+  {
+    category: 'Name that song!',
+    answer: 'YOU GIVE LOVE A BAD NAME',
+    clue: '1986'
+  },
+  {
+    category: 'Name that song!',
+    answer: "CHATTAHOOCHEE",
+    clue: 'Honky Tonk'
+  }
 ]
+
 var lives = 5;
 var money = 0;
 var question;
@@ -133,7 +132,6 @@ var guessArray = []
 var guess;
 var degrees = 0;
 var interval
-
 
 function generateGame() {
     
@@ -150,38 +148,38 @@ function generateQuestion() {
     chars = question.answer.split('');
     grid = document.getElementsByClassName('grid-item');
     for (let i = 0; i < chars.length; i++) {
-        if (chars[i] !== ' ') {
-            grid[i].style.background = 'white';
-                var p = document.createElement('p')
-                p.classList.add('hidden')
-                p.textContent = chars[i]
-                grid[i].appendChild(p)
-        }
+      if (chars[i] !== ' ') {
+          grid[i].style.background = 'white';
+            var p = document.createElement('p')
+            p.classList.add('hidden')
+            p.textContent = chars[i]
+            grid[i].appendChild(p)
     }
+  }
 }
 
 function guessLetter(letter) {
     document.getElementById('lives').textContent = "Guesses left: " + lives
     if(!checkIfGameOver()) {
-        var counter = 0
+      var counter = 0
         if (chars.indexOf(letter.id) > -1) {
-            for (var i = 0; i < chars.length; i++) {
-                if(chars[i] === letter.id) {
-                    counter++
-                    grid[i].childNodes[0].classList.remove('hidden')
-                    letter.style.background = 'green'
-                }
+          for (var i = 0; i < chars.length; i++) {
+            if(chars[i] === letter.id) {
+              counter++
+              grid[i].childNodes[0].classList.remove('hidden')
+              letter.style.background = 'green'
+              }
             }
-            money += (counter * wheelValue)
-            document.getElementById('player-bank').textContent = "Money: $" + money
+          money += (counter * wheelValue)
+          document.getElementById('player-bank').textContent = "Money: $" + money
         } else {
-            letter.style.background = 'red'
-            document.getElementById('buzzer').play()
-            lives--;
+          letter.style.background = 'red'
+          document.getElementById('buzzer').play()
+          lives--;
         }
-    } else {
+      } else {
         document.getElementById('message-box').textContent = "Take a guess!"
-    }
+  }
 }
 
 function checkIfGameOver() {
