@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://localhost:3000/profile/edit/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Mom What's For Dinner?!</title>
+  <link rel="stylesheet" href="./Mom What&#39;s For Dinner_!_files/materialize.min.css">
+  <link href="./Mom What&#39;s For Dinner_!_files/css" rel="stylesheet">
+  <link href="./Mom What&#39;s For Dinner_!_files/icon" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./Mom What&#39;s For Dinner_!_files/style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper deep-orange darken-4">
+      <a href="http://localhost:3000/" class="brand-logo center">Mom, What's For Dinner?!<i class="material-icons large">local_dining</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="http://localhost:3000/auth/login">Log In</a></li>
+        <li><a href="http://localhost:3000/auth/signup">Sign Up</a></li>
+        <li><a href="http://localhost:3000/profile">Profile</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="http://localhost:3000/profile/edit/auth/login">Log In</a></li>
+    <li><a href="http://localhost:3000/profile/edit/auth/signup">Sign Up</a></li>
+    <li><a href="http://localhost:3000/profile/edit/profile">Profile</a></li>
+    <li><a href="http://localhost:3000/profile/edit/auth/logout">Logout</a></li>
+  </ul>
+          
+
+  <div class="container">
+    
+
+
+
+<script>
+  [...document.getElementsByClassName('closeable')].forEach(function(element){
+    element.addEventListener('click', function(){
+      document.getElementsByClassName('card')[0].style.display = 'none'
+    })
+  })
+</script>
+    <div class="center">
+  <h1>Uh-Oh!</h1>
+
+  <p>I was unable to locate that page!</p>
+
+  <p>Please accept a cat picture as an apology!</p>
+
+  <img src="./Mom What&#39;s For Dinner_!_files/300" alt="Cat.Cat.Cat.">
+</div>
+
+  </div>
+
+  <script src="./Mom What&#39;s For Dinner_!_files/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var instancesNav = M.Sidenav.init(document.querySelectorAll('.sidenav'))
+      var instancesDate = M.Datepicker.init(document.querySelectorAll('.datepicker'), {
+        autoClose: false,
+        defaultDate: new Date('01/01/1990'),
+        setDefaultDate: true,
+        minDate: new Date('01/01/1920'),
+        maxDate: new Date(),
+        yearRange: 5
+      })
+    })
+  </script>
+
+
+<div class="sidenav-overlay"></div><div class="drag-target"></div></body></html>
